@@ -1,6 +1,8 @@
 import express from 'express';
-import dotenv from 'dotenv';
 import colors from 'colors';
+import dotenv from 'dotenv';
+
+import connectDB from './config/db.js';
 
 import paymentsRoutes from './routes/payments.js';
 
@@ -20,13 +22,11 @@ app.get('/', (req, res) => {
 });
 app.use('/api/payments', paymentsRoutes);
 
-// port
-const port = process.env.PORT || 5000;
+// connect to database
+connectDB();
 
-app.listen(port, () => {
-  console.log(
-    `Server is running on port ${colors.cyan.underline(
-      `http://localhost:${port}`
-    )}`
-  );
+// run server
+const port = process.env.PORT || 5000;
+app.listen(process.env.PORT, () => {
+  console.log(`Server running on ${colors.cyan(`http://localhost:${port}`)}`);
 });
