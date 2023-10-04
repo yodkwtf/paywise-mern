@@ -1,30 +1,27 @@
 import express from 'express';
+import {
+  createMovie,
+  deleteMovieById,
+  getMovieById,
+  getMovies,
+  updateMovieById,
+} from '../controllers/movies.js';
 
 const router = express.Router();
 
 // Get all movies
-router.get('/', (req, res) => {
-  return res.json({ message: 'get all movies' });
-});
+router.get('/', getMovies);
 
 // Create movie
-router.post('/', (req, res) => {
-  return res.json({ message: 'create movie' });
-});
+router.post('/', createMovie);
 
 // Get movie by ID
-router.get('/:id', (req, res) => {
-  return res.json({ message: 'get movie by id' });
-});
+router.get('/:id', getMovieById);
 
 // Update movie by ID
-router.patch('/:id', (req, res) => {
-  return res.json({ message: 'update movie by id' });
-});
+router.patch('/:id', updateMovieById);
 
 // Delete movie by ID
-router.delete('/:id', (req, res) => {
-  return res.json({ message: 'delete movie by id' });
-});
+router.delete('/:id', deleteMovieById);
 
 export default router;
