@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 
 import connectDB from './config/db.js';
 
-import paymentsRoutes from './routes/payments.js';
+import movieRouter from './routes/movies.js';
 
 dotenv.config();
 const app = express();
@@ -18,9 +18,9 @@ app.use((req, res, next) => {
 
 // routes
 app.get('/', (req, res) => {
-  return res.json({ message: 'Welcome to Paywise API' });
+  return res.json({ message: 'Welcome to Cinematica API' });
 });
-app.use('/api/payments', paymentsRoutes);
+app.use('/api/movies', movieRouter);
 
 // connect to database
 connectDB();
