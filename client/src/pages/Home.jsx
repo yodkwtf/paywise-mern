@@ -1,21 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import MovieDetails from '../components/MovieDetails';
 import MovieForm from '../components/MovieForm';
+import useMoviesContext from '../hooks/useMoviesContext';
 
 const Home = () => {
-  const [movies, setMovies] = useState(null);
-
-  const fetchMovies = async () => {
-    const res = await fetch('/api/movies');
-    const data = await res.json();
-
-    if (res.ok) {
-      setMovies(data?.movies);
-    }
-  };
+  const { movies, fetchMovies } = useMoviesContext();
 
   useEffect(() => {
     fetchMovies();
+    // eslint-disable-next-line
   }, []);
 
   return (

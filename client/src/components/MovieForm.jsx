@@ -1,46 +1,10 @@
-import { useState } from 'react';
-import toast from 'react-hot-toast';
+import useMoviesContext from '../hooks/useMoviesContext';
 
 const MovieForm = () => {
-  const [formData, setFormData] = useState({
-    title: '',
-    genre: '',
-    rating: '',
-    releaseYear: '',
-    runtime: '',
-  });
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await fetch('/api/movies', {
-        method: 'POST',
-        body: JSON.stringify(formData),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      const createdMovie = await res.json();
-
-      if (!res.ok) {
-        return toast.error(createdMovie.error);
-      }
-
-      setFormData({
-        title: '',
-        genre: '',
-        rating: '',
-        releaseYear: '',
-        runtime: '',
-      });
-      toast.success('Movie record created');
-    } catch (err) {
-      toast.error(err);
-    }
-  };
+  const { formData, setFormData, createMovie } = useMoviesContext();
 
   return (
-    <form className="create" onSubmit={handleSubmit}>
+    <form className="create" onSubmit={createMovie}>
       <h3>Add a New Movie</h3>
 
       <label htmlFor="name">Movie Name:</label>
