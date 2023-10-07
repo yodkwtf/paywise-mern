@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import MovieDetails from '../components/MovieDetails';
+import MovieForm from '../components/MovieForm';
 
 const Home = () => {
   const [movies, setMovies] = useState(null);
@@ -7,8 +8,6 @@ const Home = () => {
   const fetchMovies = async () => {
     const res = await fetch('/api/movies');
     const data = await res.json();
-
-    console.log(data);
 
     if (res.ok) {
       setMovies(data?.movies);
@@ -27,6 +26,7 @@ const Home = () => {
             <MovieDetails key={movie._id} movie={movie} />
           ))}
       </div>
+      <MovieForm />
     </div>
   );
 };
