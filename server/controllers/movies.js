@@ -10,7 +10,7 @@ const getMovies = async (req, res) => {
     const movies = await Movie.find({}).sort({ name: 1 });
 
     if (!movies) {
-      return res.status(404).json({ message: 'No movies found' });
+      return res.status(404).json({ error: 'No movies found' });
     }
 
     return res.json({
@@ -30,7 +30,7 @@ const createMovie = async (req, res) => {
   const { name, rating, genre, releaseYear, plotSummary, runtime } = req.body;
 
   if (!name || !rating || !genre || !releaseYear || !runtime) {
-    return res.status(400).json({ message: 'Please fill all fields' });
+    return res.status(400).json({ error: 'Please fill all fields' });
   }
 
   try {
@@ -59,12 +59,12 @@ const getMovieById = async (req, res) => {
   try {
     const isValidId = isValidMongoId(req.params.id);
     if (!isValidId) {
-      return res.status(400).json({ message: 'Invalid movie ID' });
+      return res.status(400).json({ error: 'Invalid movie ID' });
     }
 
     const movie = await Movie.findById(req.params.id);
     if (!movie) {
-      return res.status(404).json({ message: 'Movie not found' });
+      return res.status(404).json({ error: 'Movie not found' });
     }
 
     return res.json({
@@ -84,7 +84,7 @@ const updateMovieById = async (req, res) => {
   try {
     const isValidId = isValidMongoId(req.params.id);
     if (!isValidId) {
-      return res.status(400).json({ message: 'Invalid movie ID' });
+      return res.status(400).json({ error: 'Invalid movie ID' });
     }
 
     const movie = await Movie.findOneAndUpdate(
@@ -93,7 +93,7 @@ const updateMovieById = async (req, res) => {
       { new: true }
     );
     if (!movie) {
-      return res.status(404).json({ message: 'Movie not found' });
+      return res.status(404).json({ error: 'Movie not found' });
     }
 
     return res.json({
@@ -113,12 +113,12 @@ const deleteMovieById = async (req, res) => {
   try {
     const isValidId = isValidMongoId(req.params.id);
     if (!isValidId) {
-      return res.status(400).json({ message: 'Invalid movie ID' });
+      return res.status(400).json({ error: 'Invalid movie ID' });
     }
 
     const movie = await Movie.findOneAndDelete({ _id: req.params.id });
     if (!movie) {
-      return res.status(404).json({ message: 'Movie not found' });
+      return res.status(404).json({ error: 'Movie not found' });
     }
 
     return res.json({
