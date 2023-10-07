@@ -3,6 +3,7 @@ import { FaTrash } from 'react-icons/fa';
 
 const MovieDetails = ({ movie }) => {
   const { deleteMovie } = useMoviesContext();
+
   return (
     <div className="movie-details">
       <h4>{movie.name}</h4>
@@ -14,14 +15,20 @@ const MovieDetails = ({ movie }) => {
         <strong>Genre: </strong>
         {movie.genre}
       </p>
-      <p>
-        <strong>Release Year: </strong>
-        {movie.releaseYear}
-      </p>
-      <p>
-        <strong>Runtime: </strong>
-        {movie.runtime} mins
-      </p>
+      {movie.releaseYear && (
+        <p>
+          <strong>Release Year: </strong>
+          {movie.releaseYear}
+        </p>
+      )}
+      {movie.runtime && (
+        <p>
+          <strong>Runtime: </strong>
+          {movie.runtime}
+        </p>
+      )}
+      {movie.plotSummary && <p>{movie.plotSummary}</p>}
+
       <button onClick={() => deleteMovie(movie._id)}>
         <FaTrash />
       </button>

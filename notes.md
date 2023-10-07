@@ -11,3 +11,5 @@
 - [ ] Add same feature for tv shows
 - [ ] Improve error handling by logging "API_NAME: ERROR_MESSAGE" in server
 - [ ] Add edit movie feature
+- [ ] Make it mobile responsive
+- [ ] Add branding colors and other stuff

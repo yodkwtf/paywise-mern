@@ -11,12 +11,14 @@ const initialState = {
 export const MoviesProvider = ({ children }) => {
   const [state, dispatch] = useReducer(moviesReducer, initialState);
   const [formData, setFormData] = useState({
-    title: '',
+    name: '',
     genre: '',
     rating: '',
     releaseYear: '',
     runtime: '',
+    plotSummary: '',
   });
+  const [emptyFields, setEmptyFields] = useState([]);
 
   // # Get all movies
   const fetchMovies = async () => {
@@ -47,17 +49,20 @@ export const MoviesProvider = ({ children }) => {
 
       // Handle bad request
       if (!res.ok) {
-        return toast.error(data.error);
+        toast.error(data.error);
+        setEmptyFields(data.emptyFields);
+        return;
       }
 
       // Handle success
       dispatch({ type: 'CREATE_MOVIE', payload: data.movie });
       setFormData({
-        title: '',
+        name: '',
         genre: '',
         rating: '',
         releaseYear: '',
         runtime: '',
+        plotSummary: '',
       });
       toast.success('Movie Added!');
     } catch (err) {
@@ -91,6 +96,7 @@ export const MoviesProvider = ({ children }) => {
       value={{
         ...state,
         formData,
+        emptyFields,
         setFormData,
         fetchMovies,
         createMovie,

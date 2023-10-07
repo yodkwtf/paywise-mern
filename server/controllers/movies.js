@@ -29,11 +29,31 @@ const getMovies = async (req, res) => {
 const createMovie = async (req, res) => {
   const { name, rating, genre, releaseYear, plotSummary, runtime } = req.body;
 
-  if (!name || !rating || !genre || !releaseYear || !runtime) {
-    return res.status(400).json({ error: 'Please fill all fields' });
+  // Check if required fields are not empty
+  const emptyFields = [];
+
+  if (!name) emptyFields.push('name');
+  if (!rating) emptyFields.push('rating');
+  if (!genre) emptyFields.push('genre');
+
+  if (emptyFields.length > 0) {
+    return res
+      .status(400)
+      .json({ error: 'Please add the required fields', emptyFields });
   }
 
   try {
+    // Check if movie already exists
+    const existingMovie = await Movie.findOne({ name }).collation({
+      locale: 'en',
+      strength: 2,
+    });
+    if (existingMovie) {
+      return res
+        .status(400)
+        .json({ error: 'Movie already exists', emptyFields });
+    }
+
     const movie = await Movie.create({
       name,
       rating,
@@ -47,7 +67,7 @@ const createMovie = async (req, res) => {
       movie,
     });
   } catch (error) {
-    return res.status(500).json({ error: error.message });
+    return res.status(500).json({ error: error.message, emptyFields });
   }
 };
 

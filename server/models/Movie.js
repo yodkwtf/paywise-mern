@@ -20,14 +20,12 @@ const MovieSchema = new mongoose.Schema(
     },
     releaseYear: {
       type: Number,
-      required: true,
     },
     plotSummary: {
       type: String,
     },
     runtime: {
       type: Number,
-      required: true,
     },
   },
   {

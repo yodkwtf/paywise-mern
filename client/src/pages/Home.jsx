@@ -13,12 +13,15 @@ const Home = () => {
 
   return (
     <div className="home">
-      <div className="movies">
-        {movies &&
-          movies?.map((movie) => (
+      {movies && movies.length > 0 ? (
+        <div className="movies">
+          {movies?.map((movie) => (
             <MovieDetails key={movie._id} movie={movie} />
           ))}
-      </div>
+        </div>
+      ) : (
+        <p>No movies added...</p>
+      )}
       <MovieForm />
     </div>
   );
