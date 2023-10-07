@@ -7,7 +7,7 @@ import { isValidMongoId } from '../utils/helper.js';
  */
 const getMovies = async (req, res) => {
   try {
-    const movies = await Movie.find({}).sort({ name: 1 });
+    const movies = await Movie.find({}).sort({ createdAt: -1 });
 
     if (!movies) {
       return res.status(404).json({ error: 'No movies found' });
