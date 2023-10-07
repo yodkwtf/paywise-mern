@@ -4,7 +4,8 @@
 /* layout */
 :root {
   --primary: #1aac83;
-  --error: #e7195a;
+  --dark-red: #e7195a;
+  --light-red: #ffefef;
 }
 body {
   background: #f1f1f1;
@@ -57,15 +58,22 @@ header a {
   font-size: 0.9em;
   color: #555;
 }
-.movie-details span {
+.movie-details button {
   position: absolute;
   top: 20px;
   right: 20px;
   cursor: pointer;
-  background: #f1f1f1;
-  padding: 6px;
+  background: var(--light-red);
+  padding: 6px 6px 4px;
   border-radius: 50%;
-  color: #333;
+  color: var(--dark-red);
+  outline: none;
+  border: none;
+  transition: all 0.3s linear;
+}
+.movie-details button:hover {
+  background: var(--dark-red);
+  color: #fff;
 }
 
 /* new movie form */
@@ -90,12 +98,4 @@ form button {
   font-family: 'Poppins';
   border-radius: 4px;
   cursor: pointer;
-}
-p.error {
-  padding: 10px;
-  background: #ffefef;
-  border: 1px solid var(--error);
-  color: var(--error);
-  border-radius: 4px;
-  margin: 20px 0;
 }

@@ -65,9 +65,37 @@ export const MoviesProvider = ({ children }) => {
     }
   };
 
+  // # Delete a movie
+  const deleteMovie = async (id) => {
+    try {
+      const res = await fetch(`/api/movies/${id}`, {
+        method: 'DELETE',
+      });
+      const data = await res.json();
+
+      // Handle bad request
+      if (!res.ok) {
+        return toast.error(data.error);
+      }
+
+      // Handle success
+      dispatch({ type: 'DELETE_MOVIE', payload: id });
+      toast.success('Movie Deleted!');
+    } catch (err) {
+      toast.error(err);
+    }
+  };
+
   return (
     <MoviesContext.Provider
-      value={{ ...state, formData, setFormData, fetchMovies, createMovie }}
+      value={{
+        ...state,
+        formData,
+        setFormData,
+        fetchMovies,
+        createMovie,
+        deleteMovie,
+      }}
     >
       {children}
     </MoviesContext.Provider>

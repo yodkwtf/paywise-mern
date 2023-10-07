@@ -1,4 +1,8 @@
+import useMoviesContext from '../hooks/useMoviesContext';
+import { FaTrash } from 'react-icons/fa';
+
 const MovieDetails = ({ movie }) => {
+  const { deleteMovie } = useMoviesContext();
   return (
     <div className="movie-details">
       <h4>{movie.name}</h4>
@@ -18,6 +22,9 @@ const MovieDetails = ({ movie }) => {
         <strong>Runtime: </strong>
         {movie.runtime} mins
       </p>
+      <button onClick={() => deleteMovie(movie._id)}>
+        <FaTrash />
+      </button>
     </div>
   );
 };
