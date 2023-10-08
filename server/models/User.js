@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
-import validator from 'validator';
+import { isValidEmail, isValidPassword } from '../utils/helper.js';
 
 const UserSchema = new mongoose.Schema({
   email: {
@@ -24,10 +24,10 @@ User.signup = async function (email, password) {
     throw new Error('Email and password are required');
   }
 
-  if (!validator.isEmail(email)) {
+  if (!isValidEmail(email)) {
     throw new Error('Email is invalid');
   }
-  if (validator.isStrongPassword(password, { minSymbols: 1 })) {
+  if (!isValidPassword(password)) {
     throw new Error('Password is not strong enough');
   }
 
