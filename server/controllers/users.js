@@ -27,16 +27,21 @@ const login = async (req, res) => {
  * @route POST /api/users/signup
  */
 const signup = async (req, res) => {
+  const { email, password } = req.body;
   try {
-    const { email, password } = req.body;
+    // try and create user
+    const user = await User.signup(email, password);
 
-    // check if email and password are provided
-    if (!email || !password) {
-      return res.status(400).json({ error: 'Email and password required' });
+    if (!user) {
+      return res.status(400).json({ error: 'Failed to create user' });
     }
 
     return res.status(201).json({
       message: 'User signed up successfully',
+      user: {
+        id: user._id,
+        email: user.email,
+      },
     });
   } catch (error) {
     return res.status(500).json({ error: error.message });
