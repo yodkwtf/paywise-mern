@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 
 import connectDB from './config/db.js';
 
-import userRouter from './routes/users.js';
+import authRouter from './routes/auth.js';
 import movieRouter from './routes/movies.js';
 
 dotenv.config();
@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
   return res.json({ message: 'Welcome to Cinematica API' });
 });
-app.use('/api/users', userRouter);
+app.use('/api/auth', authRouter);
 app.use('/api/movies', movieRouter);
 
 // connect to database

@@ -1,9 +1,9 @@
-import User from '../models/User.js';
+import User from '../models/Auth.js';
 import { createToken } from '../utils/helper.js';
 
 /**
  * @description Login user
- * @route POST /api/users/login
+ * @route POST /api/auth/login
  */
 const login = async (req, res) => {
   const { email, password } = req.body;
@@ -29,7 +29,7 @@ const login = async (req, res) => {
 
 /**
  * @description Signup user
- * @route POST /api/users/signup
+ * @route POST /api/auth/signup
  */
 const signup = async (req, res) => {
   const { email, password } = req.body;

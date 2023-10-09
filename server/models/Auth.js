@@ -16,7 +16,7 @@ const UserSchema = new mongoose.Schema({
 });
 
 // static signup method
-UserSchema.signup = async function (email, password) {
+UserSchema.statics.signup = async function (email, password) {
   // validations
   if (!email || !password) {
     throw new Error('Email and Password are required');
