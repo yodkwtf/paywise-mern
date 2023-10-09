@@ -1,7 +1,11 @@
-import { createContext, useReducer, useState } from 'react';
+import { createContext, useEffect, useReducer, useState } from 'react';
 import authReducer from '../reducers/authReducer';
 import toast from 'react-hot-toast';
-import { removeFromLocal, saveToLocal } from '../helpers/localStorage';
+import {
+  getFromLocal,
+  removeFromLocal,
+  saveToLocal,
+} from '../helpers/localStorage';
 
 export const AuthContext = createContext();
 
@@ -11,6 +15,14 @@ const initialState = {
 
 const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
+
+  // check for user token in LS
+  useEffect(() => {
+    const user = getFromLocal('CINEMATICA_USER');
+    if (user) {
+      dispatch({ type: 'LOGIN', payload: user });
+    }
+  }, []);
 
   console.log('AuthContext state:', state);
 
@@ -75,6 +87,7 @@ const AuthProvider = ({ children }) => {
       }
 
       // Handle success
+      saveToLocal('CINEMATICA_USER', data.user);
       dispatch({ type: 'LOGIN', payload: data.user });
       toast.success(data?.message);
 

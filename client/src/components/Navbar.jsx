@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import useAuthContext from '../hooks/useAuthContext';
 
 const Navbar = () => {
-  const { logout } = useAuthContext();
+  const { logout, user } = useAuthContext();
 
   return (
     <header>
@@ -12,15 +12,17 @@ const Navbar = () => {
         </Link>
 
         <nav>
-          <div>
-            <button className="logout" onClick={logout}>
-              Logout
-            </button>
-          </div>
-          <div>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Register</Link>
-          </div>
+          {user ? (
+            <div>
+              <span>{user?.email}</span>
+              <button onClick={logout}>Logout</button>
+            </div>
+          ) : (
+            <div>
+              <Link to="/login">Login</Link>
+              <Link to="/signup">Register</Link>
+            </div>
+          )}
         </nav>
       </div>
     </header>
