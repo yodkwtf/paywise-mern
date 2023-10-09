@@ -8,6 +8,7 @@
 - [ ] Add project name to `package.json` files
 - [ ] Update meta tags in `index.html`
 - [ ] Create common input component for movieForm
+- [ ] Create common input component for login & signup form
 - [ ] Add same feature for tv shows
 - [ ] Improve error handling by logging "API_NAME: ERROR_MESSAGE" in server
 - [ ] Add edit movie feature

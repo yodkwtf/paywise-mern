@@ -1,37 +1,10 @@
-import { useState } from 'react';
-import toast from 'react-hot-toast';
+import useAuthContext from '../hooks/useAuthContext';
 
 const Signup = () => {
-  const [formState, setFormState] = useState({
-    email: '',
-    password: '',
-  });
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await fetch('/api/auth/signup', {
-        method: 'POST',
-        body: JSON.stringify(formState),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      const data = await res.json();
-
-      if (!res.ok) {
-        toast.error(data.error);
-        return;
-      }
-
-      toast.success(data?.message);
-    } catch (error) {
-      toast.error(error);
-    }
-  };
+  const { signup, formState, setFormState, isLoading } = useAuthContext();
 
   return (
-    <form className="signup" onSubmit={handleSubmit}>
+    <form className="signup" onSubmit={signup}>
       <h3>Sign up</h3>
 
       <div className="form-group">
@@ -54,6 +27,7 @@ const Signup = () => {
           type="password"
           name="password"
           id="password"
+          autoComplete="off"
           placeholder="Enter password"
           value={formState.password}
           onChange={(e) =>
@@ -62,7 +36,9 @@ const Signup = () => {
         />
       </div>
 
-      <button type="submit">Sign up</button>
+      <button type="submit" disabled={isLoading}>
+        Sign up
+      </button>
     </form>
   );
 };
