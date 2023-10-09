@@ -6,9 +6,21 @@ import { createToken } from '../utils/helper.js';
  * @route POST /api/users/login
  */
 const login = async (req, res) => {
+  const { email, password } = req.body;
   try {
-    return res.json({
-      message: 'User logged in successfully',
+    // try and login user
+    const user = await User.login(email, password);
+
+    // create token
+    const token = createToken(user._id);
+
+    return res.status(200).json({
+      message: 'Logged in',
+      user: {
+        id: user._id,
+        email: user.email,
+        token,
+      },
     });
   } catch (error) {
     return res.status(500).json({ error: error.message });
@@ -24,15 +36,12 @@ const signup = async (req, res) => {
   try {
     // try and create user
     const user = await User.signup(email, password);
-    if (!user) {
-      return res.status(400).json({ error: 'Failed to create user' });
-    }
 
     // create token
     const token = createToken(user._id);
 
     return res.status(201).json({
-      message: 'User signed up successfully',
+      message: 'Signup successful',
       user: {
         id: user._id,
         email: user.email,
