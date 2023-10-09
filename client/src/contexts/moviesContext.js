@@ -8,7 +8,7 @@ const initialState = {
   movies: null,
 };
 
-export const MoviesProvider = ({ children }) => {
+const MoviesProvider = ({ children }) => {
   const [state, dispatch] = useReducer(moviesReducer, initialState);
   const [formData, setFormData] = useState({
     name: '',
@@ -107,3 +107,5 @@ export const MoviesProvider = ({ children }) => {
     </MoviesContext.Provider>
   );
 };
+
+export default MoviesProvider;

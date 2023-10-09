@@ -14,3 +14,4 @@
 - [ ] Make it mobile responsive
 - [ ] Add branding colors and other stuff
 - [ ] Add username while signing up
+- [ ] Add sorting and filter features
