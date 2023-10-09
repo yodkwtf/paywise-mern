@@ -63,7 +63,7 @@ const createMovie = async (req, res) => {
       runtime,
     });
     return res.status(201).json({
-      message: 'Movie created successfully',
+      message: 'Movie added',
       movie,
     });
   } catch (error) {
@@ -117,7 +117,7 @@ const updateMovieById = async (req, res) => {
     }
 
     return res.json({
-      message: 'Movie updated successfully',
+      message: 'Movie updated',
       movie,
     });
   } catch (error) {
@@ -142,7 +142,7 @@ const deleteMovieById = async (req, res) => {
     }
 
     return res.json({
-      message: 'Movie deleted successfully',
+      message: 'Movie deleted',
       movie,
     });
   } catch (error) {

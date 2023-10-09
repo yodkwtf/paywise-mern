@@ -64,7 +64,7 @@ export const MoviesProvider = ({ children }) => {
         runtime: '',
         plotSummary: '',
       });
-      toast.success('Movie Added!');
+      toast.success(data?.message);
     } catch (err) {
       toast.error(err);
     }
@@ -85,7 +85,7 @@ export const MoviesProvider = ({ children }) => {
 
       // Handle success
       dispatch({ type: 'DELETE_MOVIE', payload: id });
-      toast.success('Movie Deleted!');
+      toast.success(data?.message);
     } catch (err) {
       toast.error(err);
     }
