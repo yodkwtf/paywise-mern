@@ -2,14 +2,18 @@ import { useEffect } from 'react';
 import MovieDetails from '../components/MovieDetails';
 import MovieForm from '../components/MovieForm';
 import useMoviesContext from '../hooks/useMoviesContext';
+import useAuthContext from '../hooks/useAuthContext';
 
 const Home = () => {
   const { movies, fetchMovies } = useMoviesContext();
+  const { user } = useAuthContext();
 
   useEffect(() => {
-    fetchMovies();
-    // eslint-disable-next-line
-  }, []);
+    if (user) {
+      fetchMovies();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   return (
     <div className="home">

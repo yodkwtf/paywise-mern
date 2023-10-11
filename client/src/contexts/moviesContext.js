@@ -1,6 +1,7 @@
 import { createContext, useReducer, useState } from 'react';
 import moviesReducer from '../reducers/moviesReducer';
 import toast from 'react-hot-toast';
+import useAuthContext from '../hooks/useAuthContext';
 
 export const MoviesContext = createContext();
 
@@ -10,6 +11,7 @@ const initialState = {
 
 const MoviesProvider = ({ children }) => {
   const [state, dispatch] = useReducer(moviesReducer, initialState);
+  const { user } = useAuthContext();
   const [formData, setFormData] = useState({
     name: '',
     genre: '',
@@ -23,7 +25,11 @@ const MoviesProvider = ({ children }) => {
   // # Get all movies
   const fetchMovies = async () => {
     try {
-      const res = await fetch('/api/movies');
+      const res = await fetch('/api/movies', {
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+        },
+      });
       const data = await res.json();
 
       if (res.ok) {
@@ -37,12 +43,18 @@ const MoviesProvider = ({ children }) => {
   // # Create a movie
   const createMovie = async (e) => {
     e.preventDefault();
+
+    if (!user) {
+      return toast.error('You are not logged in');
+    }
+
     try {
       const res = await fetch('/api/movies', {
         method: 'POST',
         body: JSON.stringify(formData),
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${user?.token}`,
         },
       });
       const data = await res.json();
@@ -72,9 +84,16 @@ const MoviesProvider = ({ children }) => {
 
   // # Delete a movie
   const deleteMovie = async (id) => {
+    if (!user) {
+      return toast.error('You are not logged in');
+    }
+
     try {
       const res = await fetch(`/api/movies/${id}`, {
         method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+        },
       });
       const data = await res.json();
 
