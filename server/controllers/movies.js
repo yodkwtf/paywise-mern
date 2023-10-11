@@ -6,8 +6,10 @@ import { isValidMongoId } from '../utils/helper.js';
  * @route GET /api/movies
  */
 const getMovies = async (req, res) => {
+  const userId = req.user?._id;
+
   try {
-    const movies = await Movie.find({}).sort({ createdAt: -1 });
+    const movies = await Movie.find({ userId }).sort({ createdAt: -1 });
 
     if (!movies) {
       return res.status(404).json({ error: 'No movies found' });
@@ -28,6 +30,7 @@ const getMovies = async (req, res) => {
  */
 const createMovie = async (req, res) => {
   const { name, rating, genre, releaseYear, plotSummary, runtime } = req.body;
+  const userId = req.user?._id;
 
   // Check if required fields are not empty
   const emptyFields = [];
@@ -44,7 +47,7 @@ const createMovie = async (req, res) => {
 
   try {
     // Check if movie already exists
-    const existingMovie = await Movie.findOne({ name }).collation({
+    const existingMovie = await Movie.findOne({ name, userId }).collation({
       locale: 'en',
       strength: 2,
     });
@@ -61,6 +64,7 @@ const createMovie = async (req, res) => {
       releaseYear,
       plotSummary,
       runtime,
+      userId,
     });
     return res.status(201).json({
       message: 'Movie added',
@@ -82,7 +86,10 @@ const getMovieById = async (req, res) => {
       return res.status(400).json({ error: 'Invalid movie ID' });
     }
 
-    const movie = await Movie.findById(req.params.id);
+    const movie = await Movie.findOne({
+      _id: req.params.id,
+      userId: req.user?._id,
+    });
     if (!movie) {
       return res.status(404).json({ error: 'Movie not found' });
     }
@@ -108,7 +115,7 @@ const updateMovieById = async (req, res) => {
     }
 
     const movie = await Movie.findOneAndUpdate(
-      { _id: req.params.id },
+      { _id: req.params.id, userId: req.user?._id },
       { ...req.body },
       { new: true }
     );
@@ -136,7 +143,10 @@ const deleteMovieById = async (req, res) => {
       return res.status(400).json({ error: 'Invalid movie ID' });
     }
 
-    const movie = await Movie.findOneAndDelete({ _id: req.params.id });
+    const movie = await Movie.findOneAndDelete({
+      _id: req.params.id,
+      userId: req.user?._id,
+    });
     if (!movie) {
       return res.status(404).json({ error: 'Movie not found' });
     }

@@ -17,3 +17,4 @@
 - [ ] Add username while signing up
 - [ ] Add sorting and filter features
 - [ ] Figure out `verify token` code in `server/middleware/auth.js`
+- [ ] Clear movies from global movies context on logout to avoid showing movies of previous user on login (happens only for a second)
