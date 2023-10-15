@@ -21,10 +21,12 @@ const MoviesProvider = ({ children }) => {
     plotSummary: '',
   });
   const [emptyFields, setEmptyFields] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   // # Get all movies
   const fetchMovies = async () => {
     try {
+      setIsLoading(true);
       const res = await fetch('/api/movies', {
         headers: {
           Authorization: `Bearer ${user?.token}`,
@@ -35,8 +37,10 @@ const MoviesProvider = ({ children }) => {
       if (res.ok) {
         dispatch({ type: 'GET_MOVIES', payload: data.movies });
       }
+      setIsLoading(false);
     } catch (error) {
       toast.error(error);
+      setIsLoading(false);
     }
   };
 
@@ -116,6 +120,8 @@ const MoviesProvider = ({ children }) => {
         ...state,
         formData,
         emptyFields,
+        isLoading,
+        dispatch,
         setFormData,
         fetchMovies,
         createMovie,

@@ -1,11 +1,7 @@
 import { createContext, useEffect, useReducer, useState } from 'react';
 import authReducer from '../reducers/authReducer';
 import toast from 'react-hot-toast';
-import {
-  getFromLocal,
-  removeFromLocal,
-  saveToLocal,
-} from '../helpers/localStorage';
+import { getFromLocal, saveToLocal } from '../helpers/localStorage';
 
 export const AuthContext = createContext();
 
@@ -99,27 +95,15 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  // # Logout user
-  const logout = async () => {
-    try {
-      // Handle success
-      removeFromLocal('CINEMATICA_USER');
-      dispatch({ type: 'LOGOUT' });
-      toast.success('Logged out');
-    } catch (error) {
-      toast.error(error);
-    }
-  };
-
   return (
     <AuthContext.Provider
       value={{
         ...state,
         formState,
         setFormState,
+        dispatch,
         isLoading,
         login,
-        logout,
         signup,
       }}
     >

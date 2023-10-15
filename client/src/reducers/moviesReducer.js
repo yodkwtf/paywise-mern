@@ -12,6 +12,10 @@ const moviesReducer = (state, action) => {
       return {
         movies: state.movies.filter((movie) => movie._id !== action.payload),
       };
+    case 'CLEAR_MOVIES':
+      return {
+        movies: [],
+      };
     default:
       return state;
   }
