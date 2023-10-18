@@ -23,6 +23,7 @@ const login = async (req, res) => {
       },
     });
   } catch (error) {
+    console.log('LOGIN_ERROR: ', error.message);
     return res.status(500).json({ error: error.message });
   }
 };
@@ -49,6 +50,7 @@ const signup = async (req, res) => {
       },
     });
   } catch (error) {
+    console.log('SIGNUP_ERROR: ', error.message);
     return res.status(500).json({ error: error.message });
   }
 };

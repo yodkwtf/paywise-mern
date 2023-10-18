@@ -4,7 +4,7 @@
 - [ ] Add swagger documentation
 - [x] Add duplicate movie error message
 - [x] Update app name locally & on github
-- [ ] Add project name to `package.json` files
+- [x] Add project name to `package.json` files
 - [ ] Update meta tags in `index.html`
 - [ ] Create common input component for movieForm
 - [ ] Create common input component for login & signup form

@@ -18,6 +18,7 @@ const auth = async (req, res, next) => {
     req.user = await User.findOne({ _id }).select('-password');
     next();
   } catch (error) {
+    console.log('AUTH_MIDDLEWARE_ERROR: ', error.message);
     res.status(401).json({ error: 'Request is not authorized' });
   }
 };

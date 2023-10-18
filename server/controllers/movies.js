@@ -20,6 +20,7 @@ const getMovies = async (req, res) => {
       movies,
     });
   } catch (error) {
+    console.log('GET_MOVIES_ERROR: ', error.message);
     return res.status(500).json({ error: error.message });
   }
 };
@@ -71,6 +72,7 @@ const createMovie = async (req, res) => {
       movie,
     });
   } catch (error) {
+    console.log('CREATE_MOVIE_ERROR: ', error.message);
     return res.status(500).json({ error: error.message, emptyFields });
   }
 };
@@ -99,6 +101,7 @@ const getMovieById = async (req, res) => {
       movie,
     });
   } catch (error) {
+    console.log('GET_SINGLE_MOVIE_ERROR: ', error.message);
     return res.status(500).json({ error: error.message });
   }
 };
@@ -128,6 +131,7 @@ const updateMovieById = async (req, res) => {
       movie,
     });
   } catch (error) {
+    console.log('UPDATE_MOVIE_ERROR: ', error.message);
     return res.status(500).json({ error: error.message });
   }
 };
@@ -156,6 +160,7 @@ const deleteMovieById = async (req, res) => {
       movie,
     });
   } catch (error) {
+    console.log('DELETE_MOVIE_ERROR: ', error.message);
     return res.status(500).json({ error: error.message });
   }
 };
