@@ -14,11 +14,13 @@ Cinematica is a feature-rich MERN (MongoDB, Express, React, Node.js) application
 
 We're adding more features to make Cinematica even better:
 
-- **Enhanced Show Support**: Track your favorite shows with ease, including seasons and episodes.
-- **Sorting and Filtering**: Sort and filter your collection by name, rating, genre, and more.
-- **Watchlist**: Keep a list of movies and shows you plan to watch.
-- **Custom Usernames**: Personalize your profile with a custom username.
-- **Edit Movies/Shows**: Edit your entries to keep your collection up-to-date.
+- [ ] **Enhanced Show Support**: Track your favorite shows with ease, including seasons and episodes.
+- [ ] **Sorting and Filtering**: Sort and filter your collection by name, rating, genre, and more.
+- [ ] **Watchlist**: Keep a list of movies and shows you plan to watch.
+- [ ] **Custom Usernames**: Personalize your profile with a custom username.
+- [ ] **Edit Movies/Shows**: Edit your entries to keep your collection up-to-date.
+- [ ] **Mobile Responsive**: Access Cinematica on the go with a mobile-friendly interface.
+- [ ] **Branding**: Add branding to make Cinematica look and feel even better.
 
 Cinematica is your ultimate tool for organizing your movie and show preferences.
 
