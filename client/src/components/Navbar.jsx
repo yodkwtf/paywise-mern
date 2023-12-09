@@ -16,7 +16,7 @@ const Navbar = () => {
         <nav>
           {user ? (
             <div>
-              <span>{user?.email}</span>
+              <span>Hey, {user?.email}</span>
               <button onClick={logout}>Logout</button>
             </div>
           ) : (

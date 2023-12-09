@@ -17,20 +17,25 @@ const Home = () => {
   }, [user]);
 
   return (
-    <div className="home">
-      {movies && movies.length > 0 ? (
-        <div className="movies">
-          {movies?.map((movie) => (
-            <MovieDetails key={movie._id} movie={movie} />
-          ))}
-        </div>
-      ) : isLoading ? (
-        <Loader />
-      ) : (
-        <p>No movies added...</p>
-      )}
-      <MovieForm />
-    </div>
+    <main className="home">
+      <div className="content-block">
+        {movies && movies.length > 0 ? (
+          <div className="movies">
+            {movies?.map((movie) => (
+              <MovieDetails key={movie._id} movie={movie} />
+            ))}
+          </div>
+        ) : isLoading ? (
+          <Loader />
+        ) : (
+          <p>No movies added...</p>
+        )}
+      </div>
+
+      <div className="form-block">
+        <MovieForm />
+      </div>
+    </main>
   );
 };
 

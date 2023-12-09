@@ -6,12 +6,12 @@
 - [x] Update app name locally & on github
 - [x] Add project name to `package.json` files
 - [x] Update meta tags in `index.html`
-- [ ] Create common input component for movieForm
-- [ ] Create common input component for login & signup form
+- [x] Create common input component for movieForm
+- [x] Create common input component for login & signup form
 - [ ] Add same feature for tv shows
 - [x] Improve error handling by logging "API_NAME: ERROR_MESSAGE" in server
 - [ ] Add edit movie feature
-- [ ] Make it mobile responsive
+- [x] Make it mobile responsive
 - [ ] Add branding
   - [ ] Change colors
   - [ ] Add favicon
