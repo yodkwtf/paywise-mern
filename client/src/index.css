@@ -3,7 +3,8 @@
 
 /* layout */
 :root {
-  --primary: #1aac83;
+  --primary: #3498db;
+  --green: #1aac83;
   --dark-red: #e7195a;
   --mid-red: #ff4d6a;
   --light-red: #ffefef;
@@ -20,6 +21,12 @@ body {
   font-family: 'Poppins';
 }
 
+/* 
+==================================
+PAGES
+==================================
+*/
+
 .pages {
   max-width: 1400px;
   padding: 3rem 1.5rem;
@@ -27,7 +34,6 @@ body {
   min-height: calc(100vh - 68px - 49px);
 }
 
-/* homepage */
 .home {
   display: grid;
   grid-template-columns: 1fr 40%;
@@ -114,6 +120,13 @@ FORM BLOCK
 form {
   margin: 0 auto;
 }
+
+form h3 {
+  margin-bottom: 1rem;
+  color: var(--primary);
+  text-align: center;
+}
+
 .form-row {
   display: flex;
   justify-content: space-between;
@@ -187,6 +200,7 @@ header .container {
   flex-wrap: wrap;
   gap: 1rem;
 }
+
 header a {
   color: #333;
   text-decoration: none;
@@ -248,7 +262,7 @@ footer .icon i:hover {
 }
 
 footer .link {
-  color: #00995e;
+  color: var(--primary);
   transition: 0.3s all linear;
   font-weight: bold;
   padding-right: 0.5rem;

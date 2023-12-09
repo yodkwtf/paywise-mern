@@ -17,10 +17,10 @@ We're adding more features to make Cinematica even better:
 - [ ] **Enhanced Show Support**: Track your favorite shows with ease, including seasons and episodes.
 - [ ] **Sorting and Filtering**: Sort and filter your collection by name, rating, genre, and more.
 - [ ] **Watchlist**: Keep a list of movies and shows you plan to watch.
-- [ ] **Custom Usernames**: Personalize your profile with a custom username.
+- [x] **Custom Usernames**: Personalize your profile with a custom username.
 - [ ] **Edit Movies/Shows**: Edit your entries to keep your collection up-to-date.
-- [ ] **Mobile Responsive**: Access Cinematica on the go with a mobile-friendly interface.
-- [ ] **Branding**: Add branding to make Cinematica look and feel even better.
+- [x] **Mobile Responsive**: Access Cinematica on the go with a mobile-friendly interface.
+- [x] **Branding**: Add branding to make Cinematica look and feel even better.
 
 Cinematica is your ultimate tool for organizing your movie and show preferences.
 
@@ -83,7 +83,7 @@ Cinematica is your ultimate tool for organizing your movie and show preferences.
 
 The app is deployed on Vercel. Check it out [here](https://cinematica-dk.vercel.app/).
 
-![Cinematica](https://user-images.githubusercontent.com/55128990/126039817-9b0b9b0a-9b0a-4b0a-9b0a-9b0a9b0a9b0a.png)
+![Cinematica](./client/public/cinematica.png)
 
 ## Contact
 

@@ -5,8 +5,6 @@ import Input from './Inputs/Input';
 import Textarea from './Inputs/Textarea';
 
 const MovieForm = () => {
-  const isMobile = window.innerWidth < 868;
-
   const [showForm, setShowForm] = useState(false);
   const { formData, setFormData, emptyFields, createMovie } =
     useMoviesContext();
