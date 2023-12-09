@@ -307,6 +307,7 @@ RESPONSIVE
 @media (max-width: 868px) {
   .home {
     grid-template-columns: 1fr;
+    row-gap: 1rem;
   }
 
   .content-block {

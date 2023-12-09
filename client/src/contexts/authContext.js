@@ -22,7 +22,11 @@ const AuthProvider = ({ children }) => {
 
   console.log('AuthContext state:', state);
 
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
   const [isLoading, setIsLoading] = useState(false);
 
   // # Signup user
@@ -53,7 +57,7 @@ const AuthProvider = ({ children }) => {
       toast.success(data?.message);
 
       setIsLoading(false);
-      setFormState({ email: '', password: '' });
+      setFormState({ name: '', email: '', password: '' });
     } catch (error) {
       setIsLoading(false);
       toast.error(error);

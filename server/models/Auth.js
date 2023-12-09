@@ -3,6 +3,10 @@ import bcrypt from 'bcrypt';
 import { isValidEmail, isValidPassword } from '../utils/helper.js';
 
 const UserSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
   email: {
     type: String,
     required: true,
@@ -16,10 +20,10 @@ const UserSchema = new mongoose.Schema({
 });
 
 // static signup method
-UserSchema.statics.signup = async function (email, password) {
+UserSchema.statics.signup = async function (name, email, password) {
   // validations
-  if (!email || !password) {
-    throw new Error('Email and Password are required');
+  if (!name || !email || !password) {
+    throw new Error('Please enter all fields');
   }
 
   if (!isValidEmail(email)) {
@@ -40,6 +44,7 @@ UserSchema.statics.signup = async function (email, password) {
 
   // create user
   const user = await this.create({
+    name,
     email,
     password: hashedPassword,
   });

@@ -17,7 +17,7 @@
   - [ ] Add favicon
   - [ ] Add open graph image
   - [ ] Add cover image to readme
-- [ ] Add username while signing up
+- [x] Add username while signing up
 - [ ] Add sorting and filter features
 - [x] Figure out `verify token` code in `server/middleware/auth.js`
 - [x] Clear movies from global movies context on logout to avoid showing movies of previous user on login (happens only for a second)

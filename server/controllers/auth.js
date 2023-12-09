@@ -18,6 +18,7 @@ const login = async (req, res) => {
       message: 'Logged in',
       user: {
         id: user._id,
+        name: user.name,
         email: user.email,
         token,
       },
@@ -33,10 +34,10 @@ const login = async (req, res) => {
  * @route POST /api/auth/signup
  */
 const signup = async (req, res) => {
-  const { email, password } = req.body;
+  const { name, email, password } = req.body;
   try {
     // try and create user
-    const user = await User.signup(email, password);
+    const user = await User.signup(name, email, password);
 
     // create token
     const token = createToken(user._id);
@@ -45,6 +46,7 @@ const signup = async (req, res) => {
       message: 'Signup successful',
       user: {
         id: user._id,
+        name: user.name,
         email: user.email,
         token,
       },

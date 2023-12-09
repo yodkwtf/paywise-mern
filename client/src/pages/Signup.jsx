@@ -13,6 +13,17 @@ const Signup = () => {
       <h3>Sign up</h3>
 
       <Input
+        labelFor="name"
+        label="Name"
+        type="name"
+        name="name"
+        id="name"
+        placeholder="Enter name"
+        value={formState.name}
+        onChange={handleChange}
+      />
+
+      <Input
         labelFor="email"
         label="Email"
         type="email"
