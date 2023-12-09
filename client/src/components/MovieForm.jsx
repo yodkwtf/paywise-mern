@@ -1,92 +1,86 @@
 import useMoviesContext from '../hooks/useMoviesContext';
+import Input from './Inputs/Input';
+import Textarea from './Inputs/Textarea';
 
 const MovieForm = () => {
   const { formData, setFormData, emptyFields, createMovie } =
     useMoviesContext();
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const getClassName = (field) => {
+    return emptyFields?.includes(field) ? 'error' : '';
+  };
+
   return (
     <form className="create" onSubmit={createMovie}>
       <h3>Add a New Movie</h3>
 
-      <div className="form-group">
-        <label htmlFor="name">Movie Name:</label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          placeholder='e.g. "The Social Network"'
-          value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className={emptyFields.includes('name') ? 'error' : ''}
+      <Input
+        labelFor="name"
+        label="Movie Name:*"
+        name="name"
+        id="name"
+        placeholder='e.g. "The Social Network"'
+        value={formData.name}
+        onChange={handleChange}
+        className={getClassName('name')}
+      />
+
+      <div className="form-row">
+        <Input
+          labelFor="genre"
+          label="Genre:*"
+          name="genre"
+          id="genre"
+          value={formData.genre}
+          onChange={handleChange}
+          className={getClassName('genre')}
+        />
+
+        <Input
+          labelFor="rating"
+          label="Rating (out of 10):*"
+          type="number"
+          name="rating"
+          id="rating"
+          value={formData.rating}
+          onChange={handleChange}
+          className={getClassName('rating')}
         />
       </div>
 
       <div className="form-row">
-        <div className="form-group">
-          <label htmlFor="genre">Genre:</label>
-          <input
-            type="text"
-            name="genre"
-            id="genre"
-            value={formData.genre}
-            onChange={(e) =>
-              setFormData({ ...formData, genre: e.target.value })
-            }
-            className={emptyFields.includes('genre') ? 'error' : ''}
-          />
-        </div>
+        <Input
+          labelFor="releaseYear"
+          label="Release Year:"
+          type="number"
+          name="releaseYear"
+          id="releaseYear"
+          value={formData.releaseYear}
+          onChange={handleChange}
+        />
 
-        <div className="form-group">
-          <label htmlFor="rating">Rating (out of 10):</label>
-          <input
-            type="number"
-            name="rating"
-            id="rating"
-            value={formData.rating}
-            onChange={(e) =>
-              setFormData({ ...formData, rating: e.target.value })
-            }
-            className={emptyFields.includes('rating') ? 'error' : ''}
-          />
-        </div>
+        <Input
+          labelFor="runtime"
+          label="Runtime (in mins):"
+          type="number"
+          name="runtime"
+          id="runtime"
+          value={formData.runtime}
+          onChange={handleChange}
+        />
       </div>
 
-      <div className="form-row">
-        <div className="form-group">
-          <label htmlFor="releaseYear">Release Year:</label>
-          <input
-            type="number"
-            name="releaseYear"
-            id="releaseYear"
-            value={formData.releaseYear}
-            onChange={(e) =>
-              setFormData({ ...formData, releaseYear: e.target.value })
-            }
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="runtime">Runtime (in mins):</label>
-          <input
-            type="number"
-            name="runtime"
-            id="runtime"
-            value={formData.runtime}
-            onChange={(e) =>
-              setFormData({ ...formData, runtime: e.target.value })
-            }
-          />
-        </div>
-      </div>
-
-      <label htmlFor="plotSummary">Plot Summary:</label>
-      <textarea
+      <Textarea
+        labelFor="plotSummary"
+        label="Plot Summary:"
         name="plotSummary"
         id="plotSummary"
         value={formData.plotSummary}
-        onChange={(e) =>
-          setFormData({ ...formData, plotSummary: e.target.value })
-        }
+        onChange={handleChange}
       />
 
       <button type="submit">Add Movie</button>
