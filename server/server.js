@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import { swaggerUI, swaggerDocs } from './swagger.js';
 import connectDB from './config/db.js';
 import authRouter from './routes/auth.js';
@@ -10,6 +11,7 @@ dotenv.config();
 const app = express();
 
 // middlewares
+app.use(cors({ origin: APP_URL, credentials: true }));
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 app.use(express.json());
 app.use((req, res, next) => {
