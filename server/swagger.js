@@ -1,11 +1,6 @@
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUI from 'swagger-ui-express';
-
-// Get the app url based on the environment
-const appUrl =
-  process.env.NODE_ENV === 'production'
-    ? 'https://cinematica-dk.vercel.app'
-    : 'http://localhost:5000';
+import { APP_URL } from './config/constants.js';
 
 const swaggerOptions = {
   swaggerDefinition: {
@@ -18,7 +13,7 @@ const swaggerOptions = {
         email: '48durgesh.kumar@gmail.com',
       },
     },
-    servers: [appUrl],
+    servers: [APP_URL],
   },
   apis: ['./routes/auth.js', './routes/movies.js'],
 };
