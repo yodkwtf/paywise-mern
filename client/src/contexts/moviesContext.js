@@ -2,6 +2,7 @@ import { createContext, useReducer, useState } from 'react';
 import moviesReducer from '../reducers/moviesReducer';
 import toast from 'react-hot-toast';
 import useAuthContext from '../hooks/useAuthContext';
+import { API_URL } from '../helpers/constants';
 
 export const MoviesContext = createContext();
 
@@ -27,7 +28,7 @@ const MoviesProvider = ({ children }) => {
   const fetchMovies = async () => {
     try {
       setIsLoading(true);
-      const res = await fetch('/api/movies', {
+      const res = await fetch(`${API_URL}/api/movies`, {
         headers: {
           Authorization: `Bearer ${user?.token}`,
         },
@@ -53,7 +54,7 @@ const MoviesProvider = ({ children }) => {
     }
 
     try {
-      const res = await fetch('/api/movies', {
+      const res = await fetch(`${API_URL}/api/movies`, {
         method: 'POST',
         body: JSON.stringify(formData),
         headers: {
@@ -93,7 +94,7 @@ const MoviesProvider = ({ children }) => {
     }
 
     try {
-      const res = await fetch(`/api/movies/${id}`, {
+      const res = await fetch(`${API_URL}/api/movies/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${user?.token}`,

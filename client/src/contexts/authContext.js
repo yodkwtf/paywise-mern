@@ -2,6 +2,7 @@ import { createContext, useEffect, useReducer, useState } from 'react';
 import authReducer from '../reducers/authReducer';
 import toast from 'react-hot-toast';
 import { getFromLocal, saveToLocal } from '../helpers/localStorage';
+import { API_URL } from '../helpers/constants';
 
 export const AuthContext = createContext();
 
@@ -35,7 +36,7 @@ const AuthProvider = ({ children }) => {
     setIsLoading(true);
 
     try {
-      const res = await fetch('/api/auth/signup', {
+      const res = await fetch(`${API_URL}/api/auth/signup`, {
         method: 'POST',
         body: JSON.stringify(formState),
         headers: {
@@ -70,7 +71,7 @@ const AuthProvider = ({ children }) => {
     setIsLoading(true);
 
     try {
-      const res = await fetch('/api/auth/login', {
+      const res = await fetch(`${API_URL}/api/auth/login`, {
         method: 'POST',
         body: JSON.stringify(formState),
         headers: {
