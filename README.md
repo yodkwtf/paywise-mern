@@ -2,6 +2,12 @@
 
 Cinematica is a feature-rich MERN (MongoDB, Express, React, Node.js) application that allows users to seamlessly track and manage the movies and shows they watch or plan to watch. With user account management, full CRUD (Create, Read, Update, Delete) functionality, and a user-friendly interface, Cinematica is your go-to tool for organizing your entertainment preferences.
 
+## Deployment
+
+The app is deployed on Vercel. Check it out [here](https://cinematica-mern.vercel.app/).
+
+![Cinematica](./client/public/cinematica.png)
+
 ## Key Features
 
 - **User Accounts**: Create and sign in to manage your collection.
@@ -69,21 +75,6 @@ Cinematica is your ultimate tool for organizing your movie and show preferences.
    ```
 
 7. Open [http://localhost:3000](http://localhost:3000) to view the client and [http://localhost:5000](http://localhost:5000) to view the server in the browser.
-
-## Technologies
-
-- **Frontend:** React, React Router, Axios
-- **Backend:** Node.js, Express, MongoDB, Mongoose
-- **Authentication:** JSON Web Tokens (JWT)
-- **Styling:** CSS, CSS Modules
-- **Data Validation:** Express Validator
-- **State Management:** React Context API
-
-## Deployment
-
-The app is deployed on Vercel. Check it out [here](https://cinematica-dk.vercel.app/).
-
-![Cinematica](./client/public/cinematica.png)
 
 ## Contact
 

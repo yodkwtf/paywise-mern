@@ -21,7 +21,7 @@
 - [ ] Add sorting and filter features
 - [x] Figure out `verify token` code in `server/middleware/auth.js`
 - [x] Clear movies from global movies context on logout to avoid showing movies of previous user on login (happens only for a second)
-- [ ] Initial deploy
+- [x] Initial deploy
 - [ ] Fix swagger issues
   - [ ] Check why get movies returns empty array
   - [ ] Why no option to add body data
