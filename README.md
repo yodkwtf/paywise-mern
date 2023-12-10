@@ -68,7 +68,7 @@ Cinematica is your ultimate tool for organizing your movie and show preferences.
    npm start
    ```
 
-7. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+7. Open [http://localhost:3000](http://localhost:3000) to view the client and [http://localhost:5000](http://localhost:5000) to view the server in the browser.
 
 ## Technologies
 
