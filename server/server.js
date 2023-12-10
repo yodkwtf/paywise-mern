@@ -11,7 +11,7 @@ dotenv.config();
 const app = express();
 
 // middlewares
-app.use(cors({ origin: APP_URL, credentials: true }));
+app.use(cors());
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 app.use(express.json());
 app.use((req, res, next) => {
