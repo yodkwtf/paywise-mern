@@ -5,11 +5,7 @@ import { swaggerUI, swaggerDocs } from './swagger.js';
 import connectDB from './config/db.js';
 import authRouter from './routes/auth.js';
 import movieRouter from './routes/movies.js';
-import {
-  API_URL,
-  swaggerCustomCssUrl,
-  swaggerCustomJs,
-} from './config/constants.js';
+import { API_URL } from './config/constants.js';
 
 dotenv.config();
 const app = express();
@@ -23,14 +19,7 @@ app.use((req, res, next) => {
 });
 
 // routes
-app.use(
-  '/api-docs',
-  swaggerUI.serve,
-  swaggerUI.setup(swaggerDocs, {
-    customCss: swaggerCustomJs,
-    customCssUrl: swaggerCustomCssUrl,
-  })
-);
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 app.get('/', (req, res) => {
   return res.json({
     message: 'Welcome to Cinematica API',
