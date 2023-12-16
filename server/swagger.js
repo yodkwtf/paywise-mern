@@ -6,9 +6,10 @@ const swaggerOptions = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Cinematica API',
+      title: 'Cinematica Server APIs',
       version: '1.0.0',
-      description: 'Cinematica API Documentation',
+      description:
+        'The backend for the Cinematica app built with Node.js, Express, and MongoDB.',
       contact: {
         name: 'Durgesh Chaudhary',
         email: '48durgesh.kumar@gmail.com',
