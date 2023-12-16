@@ -13,7 +13,7 @@ The app is deployed on Vercel. Check it out [here](https://cinematica-mern.verce
 - **User Accounts**: Create and sign in to manage your collection.
 - **Add Movies and Shows**: Quickly add details like name, duration, release year, genre, plot, and rating.
 - **Rate Movies**: Keep a record of your movie ratings for future reference.
-- **Shows Too**: Cinematica supports TV shows, tracking seasons and episodes.
+- **Track Shows**: Cinematica supports TV shows, tracking seasons and episodes.
 - **Edit and Delete**: Easily manage your collection by editing or removing entries.
 
 ## Upcoming Features

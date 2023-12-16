@@ -15,13 +15,6 @@ router.use(auth);
 
 /**
  * @swagger
- * tags:
- *   name: Movies
- *   description: Movie-related APIs
- */
-
-/**
- * @swagger
  * /api/movies:
  *   get:
  *     summary: Get all movies

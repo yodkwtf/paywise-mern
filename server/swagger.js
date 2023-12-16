@@ -38,4 +38,13 @@ const swaggerOptions = {
 };
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 
+/**
+ * @swagger
+ * tags:
+ *   name: Authentication
+ *   description: Authentication-related APIs
+ *   name: Movies
+ *   description: Movie-related APIs
+ */
+
 export { swaggerUI, swaggerDocs };

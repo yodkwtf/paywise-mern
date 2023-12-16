@@ -5,13 +5,6 @@ const router = express.Router();
 
 /**
  * @swagger
- * tags:
- *   name: Authentication
- *   description: Authentication-related APIs
- */
-
-/**
- * @swagger
  * /api/auth/login:
  *   post:
  *     summary: User login
@@ -42,6 +35,7 @@ const router = express.Router();
  *       500:
  *         description: Internal server error
  */
+router.post('/login', login);
 
 /**
  * @swagger
@@ -79,11 +73,6 @@ const router = express.Router();
  *       500:
  *         description: Internal server error
  */
-
-// login user
-router.post('/login', login);
-
-// signup user
 router.post('/signup', signup);
 
 export default router;
