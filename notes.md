@@ -10,7 +10,7 @@
 - [x] Create common input component for login & signup form
 - [ ] Add same feature for tv shows
 - [x] Improve error handling by logging "API_NAME: ERROR_MESSAGE" in server
-- [ ] Add edit movie feature
+- [x] Add edit movie feature
 - [x] Make it mobile responsive
 - [x] Add branding
   - [x] Change colors

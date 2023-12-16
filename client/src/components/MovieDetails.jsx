@@ -1,8 +1,8 @@
 import useMoviesContext from '../hooks/useMoviesContext';
-import { FaTrash } from 'react-icons/fa';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 
 const MovieDetails = ({ movie }) => {
-  const { deleteMovie } = useMoviesContext();
+  const { deleteMovie, handleEdit } = useMoviesContext();
 
   return (
     <div className="movie-details">
@@ -24,12 +24,20 @@ const MovieDetails = ({ movie }) => {
       {movie.runtime && (
         <p>
           <strong>Runtime: </strong>
-          {movie.runtime}
+          {movie.runtime} mins
         </p>
       )}
-      {movie.plotSummary && <p>{movie.plotSummary}</p>}
+      {movie.plotSummary && (
+        <p>
+          <strong>Summary: </strong>
+          {movie.plotSummary}
+        </p>
+      )}
 
-      <button onClick={() => deleteMovie(movie._id)}>
+      <button id="edit-movie" onClick={() => handleEdit(movie)}>
+        <FaEdit />
+      </button>
+      <button id="delete-movie" onClick={() => deleteMovie(movie._id)}>
         <FaTrash />
       </button>
     </div>

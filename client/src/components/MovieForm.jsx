@@ -1,13 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import useMoviesContext from '../hooks/useMoviesContext';
 import Input from './Inputs/Input';
 import Textarea from './Inputs/Textarea';
 
 const MovieForm = () => {
-  const [showForm, setShowForm] = useState(false);
-  const { formData, setFormData, emptyFields, createMovie } =
-    useMoviesContext();
+  const {
+    formData,
+    setFormData,
+    emptyFields,
+    createMovie,
+    showForm,
+    setShowForm,
+    isEditing,
+    editMovie,
+  } = useMoviesContext();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -30,19 +37,20 @@ const MovieForm = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
+    // eslint-disable-next-line
   }, []);
 
   return (
     <>
       <div className="form-header">
-        <h3>Add a New Movie</h3>
+        <h3>{isEditing ? 'Edit Movie' : 'Add a New Movie'}</h3>
         <button className="btn-dropdown" onClick={() => setShowForm(!showForm)}>
           {showForm ? <FaChevronUp /> : <FaChevronDown />}
         </button>
       </div>
 
       {showForm && (
-        <form className="create" onSubmit={createMovie}>
+        <form className="create" onSubmit={isEditing ? editMovie : createMovie}>
           <Input
             labelFor="name"
             label="Movie Name:*"
@@ -108,7 +116,7 @@ const MovieForm = () => {
             onChange={handleChange}
           />
 
-          <button type="submit">Add Movie</button>
+          <button type="submit">{isEditing ? 'Edit' : 'Add'} Movie</button>
         </form>
       )}
     </>

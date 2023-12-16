@@ -24,7 +24,7 @@ We're adding more features to make Cinematica even better:
 - [ ] **Sorting and Filtering**: Sort and filter your collection by name, rating, genre, and more.
 - [ ] **Watchlist**: Keep a list of movies and shows you plan to watch.
 - [x] **Custom Usernames**: Personalize your profile with a custom username.
-- [ ] **Edit Movies/Shows**: Edit your entries to keep your collection up-to-date.
+- [x] **Edit Movies/Shows**: Edit your entries to keep your collection up-to-date.
 - [x] **Mobile Responsive**: Access Cinematica on the go with a mobile-friendly interface.
 - [x] **Branding**: Add branding to make Cinematica look and feel even better.
 

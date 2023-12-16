@@ -8,6 +8,9 @@
   --dark-red: #e7195a;
   --mid-red: #ff4d6a;
   --light-red: #ffefef;
+  --dark-green: #1aac83;
+  --mid-green: #1aac83;
+  --light-green: #e7f9f1;
 }
 
 * {
@@ -56,7 +59,7 @@ CONTENT BLOCK
 }
 .movie-details h4 {
   margin: 0 0 10px 0;
-  font-size: 1.2em;
+  font-size: 1.2rem;
   color: var(--primary);
   text-transform: capitalize;
 }
@@ -67,18 +70,32 @@ CONTENT BLOCK
 }
 .movie-details button {
   position: absolute;
-  top: 20px;
-  right: 20px;
   cursor: pointer;
-  background: var(--light-red);
   padding: 6px 6px 4px;
   border-radius: 50%;
-  color: var(--mid-red);
   outline: none;
   border: none;
   transition: all 0.3s linear;
 }
-.movie-details button:hover {
+
+#edit-movie {
+  top: 20px;
+  right: 20px;
+  background: var(--light-green);
+  color: var(--mid-green);
+}
+#edit-movie:hover {
+  background: var(--dark-green);
+  color: #fff;
+}
+
+#delete-movie {
+  top: 60px;
+  right: 20px;
+  background: var(--light-red);
+  color: var(--mid-red);
+}
+#delete-movie:hover {
   background: var(--dark-red);
   color: #fff;
 }
@@ -345,5 +362,19 @@ RESPONSIVE
 @media (max-width: 581px) {
   header .container {
     justify-content: center;
+  }
+
+  .pages {
+    padding: 3rem 0.75rem;
+  }
+
+  .movie-details {
+    padding: 1rem;
+  }
+  .movie-details h4 {
+    font-size: 1.1rem;
+  }
+  .movie-details p {
+    font-size: 0.8em;
   }
 }
