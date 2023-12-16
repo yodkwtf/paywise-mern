@@ -5,7 +5,12 @@ import { swaggerUI, swaggerDocs } from './swagger.js';
 import connectDB from './config/db.js';
 import authRouter from './routes/auth.js';
 import movieRouter from './routes/movies.js';
-import { API_URL, SWAGGER_CSS_URL } from './config/constants.js';
+import {
+  API_URL,
+  SWAGGER_CSS_URL,
+  swaggerCustomCssUrl,
+  swaggerCustomJs,
+} from './config/constants.js';
 
 dotenv.config();
 const app = express();
@@ -22,7 +27,10 @@ app.use((req, res, next) => {
 app.use(
   '/api-docs',
   swaggerUI.serve,
-  swaggerUI.setup(swaggerDocs, { customCssUrl: SWAGGER_CSS_URL })
+  swaggerUI.setup(swaggerDocs, {
+    customCss: swaggerCustomJs,
+    customCssUrl: swaggerCustomCssUrl,
+  })
 );
 app.get('/', (req, res) => {
   return res.json({
