@@ -61,6 +61,17 @@ router.get('/', getMovies);
  *                 type: string
  *               runtime:
  *                 type: number
+ *           required:
+ *             - name
+ *             - rating
+ *             - genre
+ *           example:
+ *             name: The Godfather
+ *             rating: 9.2
+ *             genre: Drama
+ *             releaseYear: 1972
+ *             plotSummary: The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.
+ *             runtime: 175
  *     responses:
  *       201:
  *         description: Movie created successfully
@@ -115,11 +126,35 @@ router.get('/:id', getMovieById);
  *         application/json:
  *           schema:
  *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               rating:
+ *                 type: number
+ *               genre:
+ *                 type: string
+ *               releaseYear:
+ *                 type: number
+ *               plotSummary:
+ *                 type: string
+ *               runtime:
+ *                 type: number
+ *           required:
+ *             - name
+ *             - rating
+ *             - genre
+ *           example:
+ *             name: Updated Movie
+ *             rating: 8.5
+ *             genre: Action
+ *             releaseYear: 2022
+ *             plotSummary: An updated plot summary.
+ *             runtime: 120
  *     responses:
  *       200:
  *         description: Movie updated
  *       400:
- *         description: Invalid movie ID
+ *         description: Invalid movie ID or missing required fields
  *       404:
  *         description: Movie not found
  */

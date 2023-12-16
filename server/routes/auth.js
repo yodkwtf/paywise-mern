@@ -31,6 +31,9 @@ const router = express.Router();
  *             required:
  *               - email
  *               - password
+ *           example:
+ *             email: john@mail.com
+ *             password: HelloWorld@123
  *     responses:
  *       200:
  *         description: Logged in successfully
@@ -54,13 +57,20 @@ const router = express.Router();
  *           schema:
  *             type: object
  *             properties:
+ *               name:
+ *                 type: string
  *               email:
  *                 type: string
  *               password:
  *                 type: string
  *             required:
+ *               - name
  *               - email
  *               - password
+ *           example:
+ *             name: John Doe
+ *             email: john@mail.com
+ *             password: HelloWorld@123
  *     responses:
  *       201:
  *         description: Signup successful
