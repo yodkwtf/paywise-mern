@@ -1,6 +1,6 @@
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUI from 'swagger-ui-express';
-import { APP_URL } from './config/constants.js';
+import { DEV_URL, PROD_URL } from './config/constants.js';
 
 const swaggerOptions = {
   definition: {
@@ -30,7 +30,10 @@ const swaggerOptions = {
     ],
     servers: [
       {
-        url: APP_URL,
+        url: DEV_URL,
+      },
+      {
+        url: PROD_URL,
       },
     ],
   },
