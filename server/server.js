@@ -7,7 +7,6 @@ import authRouter from './routes/auth.js';
 import movieRouter from './routes/movies.js';
 import {
   API_URL,
-  SWAGGER_CSS_URL,
   swaggerCustomCssUrl,
   swaggerCustomJs,
 } from './config/constants.js';
