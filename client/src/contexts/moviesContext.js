@@ -134,7 +134,9 @@ const MoviesProvider = ({ children }) => {
   };
 
   // # Edit a movie
-  const editMovie = async () => {
+  const editMovie = async (e) => {
+    e.preventDefault();
+
     if (!user) {
       return toast.error('You are not logged in');
     }
