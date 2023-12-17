@@ -22,7 +22,7 @@ We're adding more features to make Cinematica even better:
 
 - [ ] **Enhanced Show Support**: Track your favorite shows with ease, including seasons and episodes.
 - [ ] **Sorting and Filtering**: Sort and filter your collection by name, rating, genre, and more.
-- [ ] **Watchlist**: Keep a list of movies and shows you plan to watch.
+- [ ] **Favorites **: Keep a list of your favorite movies and shows.
 - [x] **Custom Usernames**: Personalize your profile with a custom username.
 - [x] **Edit Movies/Shows**: Edit your entries to keep your collection up-to-date.
 - [x] **Mobile Responsive**: Access Cinematica on the go with a mobile-friendly interface.
