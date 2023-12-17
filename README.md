@@ -76,6 +76,10 @@ Cinematica is your ultimate tool for organizing your movie and show preferences.
 
 7. Open [http://localhost:3000](http://localhost:3000) to view the client and [http://localhost:5000](http://localhost:5000) to view the server in the browser.
 
+## Contributing
+
+If you'd like to contribute to Cinematica, please fork the repository and use a feature branch. Pull requests are warmly welcome. For major changes, please open an issue first to discuss what you would like to change.
+
 ## Contact
 
 - Email: 48durgesh.kumar@gmail.com
