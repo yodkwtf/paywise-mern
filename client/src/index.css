@@ -398,8 +398,7 @@ footer .icon i {
 }
 
 .modal-content label,
-.modal-content input,
-.modal-content select {
+.modal-content input {
   display: block;
   margin-bottom: 10px;
   width: 100%;
@@ -409,8 +408,17 @@ footer .icon i {
   box-sizing: border-box;
 }
 
-.modal-content select {
+.modal-content button {
+  display: block;
+  width: 100%;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  margin: 10px auto;
+  border-radius: 4px;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 .modal-content button:hover {
