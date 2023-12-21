@@ -13,7 +13,7 @@ const Home = () => {
 
     const [sortedBy, setSortedBy] = useState(null);
     const [sortOrder, setSortOrder] = useState("asc");
-    const [filterBy, setFilterBy] = useState({ genre: "", releaseYear: "", rating: "" });
+    const [filteredMovies, setFilterMovies] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [isFilterModalOpen, setFilterModalOpen] = useState(false);
 
@@ -34,12 +34,9 @@ const Home = () => {
         setSortOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"));
     };
 
-    const handleFilterChange = (field, value) => {
-        setFilterBy((prevFilters) => ({ ...prevFilters, [field]: value }));
-    };
-
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
+        handleSearch();
     };
 
     const handleFilterButtonClick = () => {
@@ -50,18 +47,31 @@ const Home = () => {
         setFilterModalOpen(false);
     };
 
-    const filteredMovies =
-        movies &&
-        movies.filter((movie) => {
-            return (
-                (!filterBy.genre || movie.genre === filterBy.genre) &&
-                (!filterBy.releaseYear || movie.releaseYear === parseInt(filterBy.releaseYear, 10)) &&
-                (!filterBy.rating || movie.rating === parseInt(filterBy.rating, 10)) &&
-                movie.name.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-        });
+    const handleApplyFilter = (filterValues) => {
+        const filteredMovies =
+            movies &&
+            movies.filter((movie) => {
+                return (
+                    (!filterValues.genre || movie.genre.toLowerCase().includes(filterValues.genre.toLowerCase())) &&
+                    (!filterValues.releaseYear || movie.releaseYear === parseInt(filterValues.releaseYear, 10)) &&
+                    (!filterValues.rating || movie.rating === parseInt(filterValues.rating, 10))
+                );
+            });
+        setFilterMovies(filteredMovies);
+        console.log("Filtered Movies:", filteredMovies);
+    };
 
-    const sortedMovies = (filteredMovies || []).sort((a, b) => {
+    const handleSearch = () => {
+        const searchedMovies =
+            movies &&
+            movies.filter((movie) => {
+                return !searchTerm || movie.name.toLowerCase().includes(searchTerm.toLowerCase());
+            });
+        setFilterMovies(searchedMovies);
+        console.log("Searched Movies:", searchedMovies);
+    };
+
+    const sortedMovies = (filteredMovies.length > 0 ? filteredMovies : movies ? movies : []).sort((a, b) => {
         if (sortedBy === "name") {
             return sortOrder === "asc" ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
         } else if (sortedBy === "releaseYear") {
@@ -103,7 +113,7 @@ const Home = () => {
                     </label>
 
                     <Modal isOpen={isFilterModalOpen} onClose={handleFilterModalClose}>
-                        <Filter genres={["Action", "Drama", "Comedy"]} onFilterChange={handleFilterChange} />
+                        <Filter onClose={handleFilterModalClose} onApplyFilter={handleApplyFilter} />
                     </Modal>
                 </div>
 
