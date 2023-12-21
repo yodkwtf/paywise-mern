@@ -36,7 +36,7 @@ const Home = () => {
 
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
-        handleSearch();
+        handleSearch(e);
     };
 
     const handleFilterButtonClick = () => {
@@ -61,12 +61,19 @@ const Home = () => {
         console.log("Filtered Movies:", filteredMovies);
     };
 
-    const handleSearch = () => {
+    const handleSearch = (e) => {
         const searchedMovies =
             movies &&
             movies.filter((movie) => {
                 return !searchTerm || movie.name.toLowerCase().includes(searchTerm.toLowerCase());
             });
+
+        if (!searchedMovies.length) {
+            e.target.style.border = "1px solid red";
+        } else {
+            e.target.style.border = "1px solid #ddd";
+        }
+
         setFilterMovies(searchedMovies);
         console.log("Searched Movies:", searchedMovies);
     };
