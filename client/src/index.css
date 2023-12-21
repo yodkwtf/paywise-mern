@@ -397,7 +397,6 @@ footer .icon i {
   color: #333;
 }
 
-/* Apply the same styles to labels and inputs */
 .modal-content label,
 .modal-content input,
 .modal-content select {
@@ -410,20 +409,8 @@ footer .icon i {
   box-sizing: border-box;
 }
 
-/* Additional styling for select elements */
 .modal-content select {
   cursor: pointer;
-}
-
-/* Adjust styling for buttons if needed */
-.modal-content button {
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  padding: 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.3s ease;
 }
 
 .modal-content button:hover {
