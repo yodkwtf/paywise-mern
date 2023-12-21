@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import MovieDetails from "../components/MovieDetails";
 import MovieForm from "../components/MovieForm";
+import Filter from "../components/Filter";
+import Modal from "../components/Modal";
 import useMoviesContext from "../hooks/useMoviesContext";
 import useAuthContext from "../hooks/useAuthContext";
 import Loader from "../components/Loader";
@@ -13,6 +15,7 @@ const Home = () => {
     const [sortOrder, setSortOrder] = useState("asc");
     const [filterBy, setFilterBy] = useState({ genre: "", releaseYear: "", rating: "" });
     const [searchTerm, setSearchTerm] = useState("");
+    const [isFilterModalOpen, setFilterModalOpen] = useState(false);
 
     useEffect(() => {
         if (user) {
@@ -31,8 +34,20 @@ const Home = () => {
         setSortOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"));
     };
 
+    const handleFilterChange = (field, value) => {
+        setFilterBy((prevFilters) => ({ ...prevFilters, [field]: value }));
+    };
+
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
+    };
+
+    const handleFilterButtonClick = () => {
+        setFilterModalOpen(true);
+    };
+
+    const handleFilterModalClose = () => {
+        setFilterModalOpen(false);
     };
 
     const filteredMovies =
@@ -79,10 +94,17 @@ const Home = () => {
                             </button>
                         )}{" "}
                     </label>
+                    <button className="filter-button" onClick={handleFilterButtonClick}>
+                        Filter
+                    </button>
 
                     <label>
                         <input type="text" placeholder="Search..." onChange={handleSearchChange} value={searchTerm} />
                     </label>
+
+                    <Modal isOpen={isFilterModalOpen} onClose={handleFilterModalClose}>
+                        <Filter genres={["Action", "Drama", "Comedy"]} onFilterChange={handleFilterChange} />
+                    </Modal>
                 </div>
 
                 {sortedMovies.length > 0 ? (
