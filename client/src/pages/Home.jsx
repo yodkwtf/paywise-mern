@@ -34,11 +34,6 @@ const Home = () => {
         setSortOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"));
     };
 
-    const handleSearchChange = (e) => {
-        setSearchTerm(e.target.value);
-        handleSearch(e);
-    };
-
     const handleFilterButtonClick = () => {
         setFilterModalOpen(true);
     };
@@ -62,16 +57,19 @@ const Home = () => {
     };
 
     const handleSearch = (e) => {
+        const searchedTerm = e.target.value.toLowerCase();
+        setSearchTerm(searchedTerm);
+
         const searchedMovies =
             movies &&
             movies.filter((movie) => {
-                return !searchTerm || movie.name.toLowerCase().includes(searchTerm.toLowerCase());
+                return !searchedTerm || movie.name.toLowerCase().includes(searchedTerm);
             });
 
-        if (!searchedMovies.length) {
-            e.target.style.border = "1px solid red";
+        if (searchedMovies.length > 0) {
+            e.target.style.border = "1px solid #ddd"; // Reset the border color if there are matching movies
         } else {
-            e.target.style.border = "1px solid #ddd";
+            e.target.style.border = searchedTerm ? "1px solid red" : "1px solid #ddd"; // Red border if no matching movies and a search term exists
         }
 
         setFilterMovies(searchedMovies);
@@ -116,7 +114,7 @@ const Home = () => {
                     </button>
 
                     <label>
-                        <input type="text" placeholder="Search..." onChange={handleSearchChange} value={searchTerm} />
+                        <input type="text" placeholder="Search..." onChange={handleSearch} value={searchTerm} />
                     </label>
 
                     <Modal isOpen={isFilterModalOpen} onClose={handleFilterModalClose}>
