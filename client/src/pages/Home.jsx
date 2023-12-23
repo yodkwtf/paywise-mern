@@ -24,6 +24,11 @@ const Home = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user]);
 
+    useEffect(() => {
+        // Update filteredMovies when movies are fetched
+        setFilterMovies(movies);
+    }, [movies]);
+
     const handleSortChange = (e) => {
         const selectedSort = e.target.value;
         setSortOrder((prevOrder) => (selectedSort === sortedBy ? (prevOrder === "asc" ? "desc" : "asc") : "asc"));
@@ -76,7 +81,7 @@ const Home = () => {
         console.log("Searched Movies:", searchedMovies);
     };
 
-    const sortedMovies = (filteredMovies.length > 0 ? filteredMovies : movies ? movies : []).sort((a, b) => {
+    const sortedMovies = (filteredMovies && filteredMovies.length > 0 ? filteredMovies : []).sort((a, b) => {
         if (sortedBy === "name") {
             return sortOrder === "asc" ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
         } else if (sortedBy === "releaseYear") {
