@@ -4,6 +4,7 @@
 /* layout */
 :root {
   --primary: #3498db;
+  --primary-dark: #1b5379;
   --green: #1aac83;
   --dark-red: #e7195a;
   --mid-red: #ff4d6a;
@@ -329,6 +330,8 @@ footer .icon i {
   align-items: center;
   width: 100%;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
 .controls label {
@@ -359,11 +362,13 @@ footer .icon i {
   padding: 8px 12px;
   border-radius: 4px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: all 0.3s linear;
 }
 
 .controls button:hover {
-  background: var(--dark-green);
+  background: var(--primary-dark);
+  opacity: 0.99;
+  scale: 0.99;
 }
 
 /* Modal Overlay */
@@ -418,11 +423,13 @@ footer .icon i {
   margin: 10px auto;
   border-radius: 4px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: all 0.3s linear;
 }
 
 .modal-content button:hover {
-  background: var(--dark-green);
+  background: var(--primary-dark);
+  opacity: 0.99;
+  scale: 0.99;
 }
 
 @keyframes spin {
