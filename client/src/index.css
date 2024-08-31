@@ -195,6 +195,33 @@ form button:hover {
   scale: 0.99;
 }
 
+.divider {
+  margin: 2rem auto;
+  position: relative;
+}
+
+.divider span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 0 1rem;
+}
+
+.guest-btn {
+  color: var(--primary-dark);
+  background: #fff;
+  border: 1px solid var(--primary-dark);
+  margin-top: 0;
+}
+
+.guest-btn:hover {
+  color: #fff;
+  background: var(--primary-dark);
+  border: 1px solid var(--primary-dark);
+}
+
 input.error {
   border: 1px solid var(--dark-red);
 }

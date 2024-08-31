@@ -2,7 +2,8 @@ import Input from '../components/Inputs/Input';
 import useAuthContext from '../hooks/useAuthContext';
 
 const Signup = () => {
-  const { signup, formState, setFormState, isLoading } = useAuthContext();
+  const { signup, formState, setFormState, isLoading, guestLogin } =
+    useAuthContext();
 
   const handleChange = (e) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
@@ -48,6 +49,15 @@ const Signup = () => {
 
       <button type="submit" disabled={isLoading}>
         Sign up
+      </button>
+
+      <div className="divider">
+        <hr />
+        <span>or</span>
+      </div>
+
+      <button type="submit" className="guest-btn" onClick={guestLogin}>
+        Log in as Guest
       </button>
     </form>
   );

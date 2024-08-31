@@ -12,7 +12,7 @@ const initialState = {
 
 const MoviesProvider = ({ children }) => {
   const [state, dispatch] = useReducer(moviesReducer, initialState);
-  const { user } = useAuthContext();
+  const { user, isGuest } = useAuthContext();
   const [formData, setFormData] = useState({
     name: '',
     genre: '',
@@ -29,6 +29,10 @@ const MoviesProvider = ({ children }) => {
 
   // Set form data when editing a movie
   const handleEdit = (movie) => {
+    if (isGuest) {
+      toast.error('Guest users cannot edit movies.');
+      return;
+    }
     setShowForm(true);
     setIsEditing(true);
     setFormData({
@@ -71,6 +75,10 @@ const MoviesProvider = ({ children }) => {
       return toast.error('You are not logged in');
     }
 
+    if (isGuest) {
+      return toast.error('Guest users cannot add movies.');
+    }
+
     try {
       const res = await fetch(`${API_URL}/api/movies`, {
         method: 'POST',
@@ -111,6 +119,10 @@ const MoviesProvider = ({ children }) => {
       return toast.error('You are not logged in');
     }
 
+    if (isGuest) {
+      return toast.error('Guest users cannot delete movies.');
+    }
+
     try {
       const res = await fetch(`${API_URL}/api/movies/${id}`, {
         method: 'DELETE',
@@ -139,6 +151,10 @@ const MoviesProvider = ({ children }) => {
 
     if (!user) {
       return toast.error('You are not logged in');
+    }
+
+    if (isGuest) {
+      return toast.error('Guest users cannot edit movies.');
     }
 
     try {

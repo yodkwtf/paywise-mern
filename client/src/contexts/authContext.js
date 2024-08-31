@@ -8,6 +8,7 @@ export const AuthContext = createContext();
 
 const initialState = {
   user: null,
+  isGuest: false, // Add isGuest state
 };
 
 const AuthProvider = ({ children }) => {
@@ -20,8 +21,6 @@ const AuthProvider = ({ children }) => {
       dispatch({ type: 'LOGIN', payload: user });
     }
   }, []);
-
-  console.log('AuthContext state:', state);
 
   const [formState, setFormState] = useState({
     name: '',
@@ -100,6 +99,12 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+  // # Guest login
+  const guestLogin = () => {
+    const guestUser = { isGuest: true };
+    dispatch({ type: 'GUEST_LOGIN', payload: guestUser });
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -110,6 +115,7 @@ const AuthProvider = ({ children }) => {
         isLoading,
         login,
         signup,
+        guestLogin,
       }}
     >
       {children}
