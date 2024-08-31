@@ -3,6 +3,7 @@ import moviesReducer from '../reducers/moviesReducer';
 import toast from 'react-hot-toast';
 import useAuthContext from '../hooks/useAuthContext';
 import { API_URL } from '../helpers/constants';
+import guestMovies from '../data/guestMovies.json';
 
 export const MoviesContext = createContext();
 
@@ -50,15 +51,20 @@ const MoviesProvider = ({ children }) => {
   const fetchMovies = async () => {
     try {
       setIsLoading(true);
-      const res = await fetch(`${API_URL}/api/movies`, {
-        headers: {
-          Authorization: `Bearer ${user?.token}`,
-        },
-      });
-      const data = await res.json();
 
-      if (res.ok) {
-        dispatch({ type: 'GET_MOVIES', payload: data.movies });
+      if (isGuest) {
+        dispatch({ type: 'GET_MOVIES', payload: guestMovies });
+      } else {
+        const res = await fetch(`${API_URL}/api/movies`, {
+          headers: {
+            Authorization: `Bearer ${user?.token}`,
+          },
+        });
+        const data = await res.json();
+
+        if (res.ok) {
+          dispatch({ type: 'GET_MOVIES', payload: data.movies });
+        }
       }
       setIsLoading(false);
     } catch (error) {

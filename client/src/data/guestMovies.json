@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Inception",
+    "genre": "Science Fiction",
+    "rating": 8.8,
+    "releaseYear": 2010,
+    "plotSummary": "A skilled thief, who steals corporate secrets through the use of dream-sharing technology, is given the inverse task of planting an idea into the mind of a C.E.O.",
+    "runtime": 148
+  },
+  {
+    "name": "The Shawshank Redemption",
+    "genre": "Drama",
+    "rating": 9.3,
+    "releaseYear": 1994,
+    "plotSummary": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+    "runtime": 142
+  },
+  {
+    "name": "The Dark Knight",
+    "genre": "Action, Crime, Drama",
+    "rating": 9.0,
+    "releaseYear": 2008,
+    "plotSummary": "When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham, pushing its protector, Batman, closer to crossing the fine line between hero and vigilante.",
+    "runtime": 152
+  },
+  {
+    "name": "Interstellar",
+    "genre": "Adventure, Drama, Science Fiction",
+    "rating": 8.6,
+    "releaseYear": 2014,
+    "plotSummary": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    "runtime": 169
+  },
+  {
+    "name": "Parasite",
+    "genre": "Drama, Thriller",
+    "rating": 8.6,
+    "releaseYear": 2019,
+    "plotSummary": "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+    "runtime": 132
+  },
+  {
+    "name": "The Matrix",
+    "genre": "Action, Science Fiction",
+    "rating": 8.7,
+    "releaseYear": 1999,
+    "plotSummary": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+    "runtime": 136
+  }
+]
